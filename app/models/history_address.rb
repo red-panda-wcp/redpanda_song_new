@@ -1,0 +1,2 @@
+class HistoryAddress < ApplicationRecord
+end

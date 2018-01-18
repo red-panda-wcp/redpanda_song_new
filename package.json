@@ -1,0 +1,5 @@
+{
+  "name": "redpanda",
+  "private": true,
+  "dependencies": {}
+}
