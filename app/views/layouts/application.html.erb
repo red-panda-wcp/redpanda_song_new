@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-users">
+        <% if user_signed_in? %><!-- ログインしていたら -->
+        <%= "ログイン中のユーザー　：#{current_user.lastname} #{current_user.firstname}　様" %>
+        <% end %>
+        |
+        <% unless user_signed_in? %>　<!-- ログインしていなければ -->
+        <%= link_to "ログイン",new_user_session_path%>
+        <%= link_to "ユーザー登録",new_user_registration_path%>
+        <% else %>　<!-- ログインしていれば -->
+        カート
+        <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
+        <% end %>
+
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
