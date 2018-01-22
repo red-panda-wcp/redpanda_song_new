@@ -12,5 +12,15 @@ class ApplicationController < ActionController::Base
       :address,
       :phone,
       :active])
+    devise_parameter_sanitizer.permit(:account_update,keys:[
+      :firstname,
+      :lastname,
+      :kana_firstname,
+      :kana_lastname,
+      :postal_code,
+      :address,
+      :phone,
+      :active])
   end
+
 end
