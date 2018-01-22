@@ -1,64 +1,36 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="form_base">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="form">
+      <h1 class="form_name">会員登録</h1>
+      <div class="form_msg"></div>
+      <div class="form_body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email address",class:"form_style form_input" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" ,placeholder: "Password",class: "form_style form_input" %><br>
+          <%= f.password_field :password_confirmation, autocomplete: "off",placeholder: "Password confirm...",class: "form_style form_input" %><br>
+<br>
+        <%= f.text_field :postal_code, placeholder:"郵便番号",class:"form_style form_input",maxlength:"8"%>
+        <br>
+        <%= f.text_field :address, placeholder:"住所",class:"form_style form_input" %>
+        <br>
+    <!-- 住所自動設定ツール参考：https://github.com/yubinbango/yubinbango -->
+
+        <%= f.text_field :lastname, placeholder:"名字",class:"form_style_half form_input" %>
+        <%= f.text_field :firstname, placeholder:"名前",class:"form_style_half form_input" %><br>
+
+        <%= f.text_field :kana_lastname, placeholder:"名字カナ",class:"form_style_half form_input" %>
+        <%= f.text_field :kana_firstname, placeholder:"名前カナ",class:"form_style_half form_input" %><br>
+        <%= f.text_field :phone, placeholder:"電話番号",class:"form_style form_input" %><br>
+
+        <%= f.submit "登録",class:"btn" %>
+      </div>
+    </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :lastname,"名字" %>
-    <%= f.text_field :lastname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :firstname,"名前" %>
-    <%= f.text_field :firstname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :kana_lastname,"カナ名字" %>
-    <%= f.text_field :kana_lastname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :kana_firstname,"カナ名前" %>
-    <%= f.text_field :kana_firstname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postal_code,"郵便番号" %>
-    <%= f.text_field :postal_code %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address,"住所" %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone,"電話" %>
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index' # devise実装時の仮設定部分。マージするとき再考が必要
+  root 'home#index' # devise実装時のリダイレクト先　暫定設定
 
   devise_for :admins
   devise_for :users
@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   resources :histroies
   resources :history_addresses
   resources :categories
+
+  get "/users/show" => "users#show"  #マイページ
+  delete "/users/destroy" =>"users#destroy" #論理削除
 
 end

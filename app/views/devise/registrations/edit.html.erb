@@ -1,18 +1,18 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <div class="form_base">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="form">
+      <h1 class="form_name">会員情報変更</h1>
+      <div class="form_msg"></div>
+      <div class="form_body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"Email address",class:"form_style form_input" %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
+            <div class="field">
+ <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
@@ -30,14 +30,23 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
+<br>
+        <%= f.text_field :postal_code,placeholder:"郵便番号",class:"form_style form_input",maxlength:"8"%>
+        <br>
+        <%= f.text_field :address,placeholder:"住所",class:"form_style form_input" %>
+        <br>
+    <!-- 住所自動設定ツール参考：https://github.com/yubinbango/yubinbango -->
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+        <%= f.text_field :lastname, placeholder:"名字",class:"form_style_half form_input" %>
+        <%= f.text_field :firstname, placeholder:"名前",class:"form_style_half form_input" %><br>
 
-<h3>Cancel my account</h3>
+        <%= f.text_field :kana_lastname, placeholder:"名字カナ",class:"form_style_half form_input" %>
+        <%= f.text_field :kana_firstname, placeholder:"名前カナ",class:"form_style_half form_input" %><br>
+        <%= f.text_field :phone, placeholder:"電話番号",class:"form_style form_input" %><br>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        <%= f.submit "変更",class:"btn" %>
+      </div>
+    </div>
+    <% end %>
 
 <%= link_to "Back", :back %>
