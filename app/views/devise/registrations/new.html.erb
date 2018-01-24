@@ -12,15 +12,15 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"メールアドレス",class:"form_style form_input" %><br>
 
           <%= f.password_field :password, autocomplete: "off" ,placeholder: "パスワード（６文字以内）",class:"form_style form_input" %><br>
-<!--             <% if @minimum_password_length %>
-            <span class="form_notice">(※パスワードは<%= @minimum_password_length %>文字以内)</span>
-            <% end %><br> -->
           <%= f.password_field :password_confirmation, autocomplete: "off",placeholder: "パスワード（確認用）",class:"form_style form_input" %><br>
 <br>
-        <%= f.text_field :postal_code, placeholder:"郵便番号",class:"form_style form_input",maxlength:"8"%>
-        <br>
-        <%= f.text_field :address, placeholder:"住所",class:"form_style form_input" %>
-        <br>
+        <div class="h-adr">
+           <span class="p-country-name" style="display:none;">Japan</span>
+          <%= f.text_field :postal_code, placeholder:"郵便番号",class:"form_style form_input p-postal-code",maxlength:"8"%>
+          <br>
+          <%= f.text_field :address, placeholder:"住所",class:"form_style form_input p-region p-locality p-street-address p-extended-address" %>
+          <br>
+        </div>
     <!-- 住所自動設定ツール参考：https://github.com/yubinbango/yubinbango -->
 
         <%= f.text_field :lastname, placeholder:"名字",class:"form_style_half form_input" %>
