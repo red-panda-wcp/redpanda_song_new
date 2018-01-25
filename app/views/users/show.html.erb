@@ -1,27 +1,28 @@
 <div class="user-box"><i class="fa fa-user-circle" aria-hidden="true"><p class="title1">ユーザー情報</p></i><br>
 <!-- ユーザー情報の一覧 -->
  <div class="user-text">
-  <span class="user_logo">カナ</span> :　<%= "#{@user.kana_lastname} #{@user.kana_firstname}" %><br>
-  <span class="user_logo">名前</span> :　<%= "#{@user.lastname} #{@user.firstname}" %><br>
-  <span class="user_logo">メールアドレス</span> :　<%= @user.email %><br>
-  <span class="user_logo">郵便番号</span> :　<%= @user.postal_code %><br>
-  <span class="user_logo">住所</span> :　<%= @user.address %><br>
-  <span class="user_logo">電話番号</span> :　<%= @user.phone %><br>
+  <span class="user_logo">カナ</span> 　<%= "#{@user.kana_lastname} #{@user.kana_firstname}" %><br>
+  <span class="user_logo">名前</span> 　<%= "#{@user.lastname} #{@user.firstname}" %><br>
+  <span class="user_logo">メールアドレス</span> 　<%= @user.email %><br>
+  <span class="user_logo">郵便番号</span> 　<%= @user.postal_code %><br>
+  <span class="user_logo">住所</span> 　<%= @user.address %><br>
+  <span class="user_logo">電話番号</span> 　<%= @user.phone %><br>
   <!-- プロフィール編集&削除ボタン -->
     <%= link_to "削除", users_destroy_path,method: :delete ,class: "square_btn2",data: { :confirm => "ユーザーを削除しますか？(\n)削除すると戻せませんのでご注意ください。"}%>
     <%= link_to "編集", edit_user_registration_path ,class: "square_btn1"%>
 </div></div></div>
 
 
-
 <!-- 購入履歴情報 -->
-<div class="history-box"><p class="title">購入履歴</p>
-  <div class="history-text">【購入】<br>
+<div class="history-box"><i class="fa fa-history" aria-hidden="true"><p class="title1">購入履歴</p></i>
+  <div class="history-text">
     <% @history_ids.each do |i| %> <!-- コントローラーでhistory_address_idを抽出して@history_idsへ配列で格納 -->
       <% h_histories = @histories.where(history_address_id: i) #history_addressで抽出した履歴一覧%>
       <% h_history_first = h_histories.first #住所、日時表示のため、うち一番上のレコードを抽出%>
+      <% h_histries_count = 0 %>
+      <% h_histories.each {|h_h_item| h_histries_count += h_h_item.count}%>
 
-      <h2>購入日：<%= h_history_first.created_at.strftime('%Y/%m/%d %H:%M')  %><br></h2>
+      購入日：<%= h_history_first.created_at.strftime('%Y/%m/%d %H:%M')  %>
         <div class="adress-text">
           【送付先情報】<br>
             名前 : <%= h_history_first.history_address.lastname%>  <%= h_history_first.history_address.firstname%> <br>
@@ -30,7 +31,7 @@
             電話番号 : <%= h_history_first.history_address.phone%> <br>
         </div>
 
-        購入商品：<%= h_histories.size %>（購入点数： ）<br>
+        購入商品：<%= h_histories.size %>（購入点数：<%= h_histries_count %> ）<br>
         <table>
           <tr>
             <td>アルバム</td>
@@ -40,13 +41,13 @@
             <td>小計</td>
           </tr>
 
-          <% h_histories.each do |h_item| #history_addressで抽出した履歴一覧から個別出力%>
+          <% h_histories.each do |h_h_item| #history_addressで抽出した履歴一覧から個別出力%>
           <tr>
-            <td><%= h_item.item.item_name %></td>
-            <td><%= h_item.item.artist_name %></td>
-            <td><%= h_item.price %></td>
-            <td> ×<%= h_item.count%> =</td>
-            <td><%= h_total_price = h_item.price * h_item.count %></td>
+            <td><%= h_h_item.item.item_name %></td>
+            <td><%= h_h_item.item.artist_name %></td>
+            <td><%= h_h_item.price %></td>
+            <td> ×<%= h_h_item.count%> =</td>
+            <td><%= h_total_price = h_h_item.price * h_h_item.count %></td>
           </tr>
           <% @total_price += h_total_price%>
           <% end %>
@@ -68,6 +69,9 @@
 
         </table>
           <% @total_price = 0 #total_price初期化%>
+          <br>
+          <hr>
+          <br>
         <% end %>
         <!-- 送付先 -->
   </div>

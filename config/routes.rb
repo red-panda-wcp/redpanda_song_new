@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   resources :history_addresses
   resources :categories
 
-  get "/users/show" => "users#show"  #マイページ
+  get "/users/show" => "users#show",as: :user_root #マイページ。deviseのupdate後のアクセス先にするため、名前をつけています
+  #https://github.com/plataformatec/devise/wiki/How-To:-Customize-the-redirect-after-a-user-edits-their-profile
+  #controllers/users/registrations_controller.rb参照
   delete "/users/destroy" =>"users#destroy" #論理削除
+
 
 end

@@ -12,20 +12,20 @@
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %><br><br>
 
-        <%= f.text_field :lastname, placeholder:"名字",class:"form_style_half form_input" %>
-        <%= f.text_field :firstname, placeholder:"名前",class:"form_style_half form_input" %><br>
-
         <%= f.text_field :kana_lastname, placeholder:"名字カナ",class:"form_style_half form_input" %>
         <%= f.text_field :kana_firstname, placeholder:"名前カナ",class:"form_style_half form_input" %><br>
+
+        <%= f.text_field :lastname, placeholder:"名字",class:"form_style_half form_input" %>
+        <%= f.text_field :firstname, placeholder:"名前",class:"form_style_half form_input" %><br>
         <div class="h-adr">
            <span class="p-country-name" style="display:none;">Japan</span>
-          <%= f.text_field :postal_code, placeholder:"郵便番号",class:"form_style form_input p-postal-code",maxlength:"8"%>
+          <%= f.text_field :postal_code, placeholder:"郵便番号",class:"form_style form_input p-postal-code",maxlength:"8",onKeyup:"this.value=this.value.replace(/[^0-9]+/,'')"%>
           <br>
           <%= f.text_field :address, placeholder:"住所",class:"form_style form_input p-region p-locality p-street-address p-extended-address" %>
           <br>
         </div>
     <!-- 住所自動設定ツール参考：https://github.com/yubinbango/yubinbango -->
-        <%= f.telephone_field :phone, placeholder:"電話番号",class:"form_style form_input" %><br>
+        <%= f.telephone_field :phone, placeholder:"電話番号",class:"form_style form_input",onKeyup:"this.value=this.value.replace(/[^0-9]+/,'')" %><br>
 
        <fieldset class="form_password_changes">
           <legend>パスワードの変更</legend>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Redpanda</title>
     <%= csrf_meta_tags %>
@@ -13,7 +13,7 @@
     <header>
       <div class="header-users">
         <% if user_signed_in? %><!-- ログインしていたら -->
-        ログイン中のユーザー　：<%= link_to "#{current_user.lastname} #{current_user.firstname}",users_show_path %>　様
+        ログイン中のユーザー　：<%= link_to "#{current_user.lastname} #{current_user.firstname}",user_root_path %>　様
         <% end %>
         |
         <% unless user_signed_in? %>　<!-- ログインしていなければ -->
@@ -26,9 +26,16 @@
 
       </div>
     </header>
-      <div class="flahs">　<!-- ログイン時のメッセージ格納 -->
-        <%= flash[:notice] or flash[:alert] %>
+    <%if flash[:notice]%>
+      <div class="flash">　<!-- ログイン時のメッセージ格納 -->
+        <%= flash[:notice] %>
       </div>
+    <% end %>
+    <%if flash[:alert]%>
+      <div class="flash flash-alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
 
     <%= yield %>
 

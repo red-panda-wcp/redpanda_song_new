@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   def index
+    @user = current_user
+
     @carts = Cart.all
     @history_address = HistoryAddress.new
 
