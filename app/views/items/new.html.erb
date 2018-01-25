@@ -1,0 +1,12 @@
+<%= form_for(@item) do |f| %>
+アーティスト名
+	<%= f.text_field :item_name %>
+
+    <% @item.discs.each do |disc| %>
+    ディスク名
+        <%= f.fields_for :discs, disc do |disc_field| %>
+            <%= disc_field.text_field :disc_name %>
+        <% end %>
+    <% end %>
+<%= f.submit "登録"%>
+<% end %>

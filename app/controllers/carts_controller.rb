@@ -2,6 +2,8 @@ class CartsController < ApplicationController
   def index
     @carts = Cart.all
 
+    @history_address = HistoryAddress.new
+
     @total_price = 0#合計金額を表示するための記述
     @carts.each do |cart|
       if current_user.id == cart.user_id
@@ -13,8 +15,12 @@ class CartsController < ApplicationController
   def create#カートインデックスに商品追加
   	@cart = Cart.new(cart_params)
   	@cart.user_id = current_user.id
-    @cart.save
-  	redirect_to carts_path
+    # if @cart.item_id == ＠＠＠＠＠＠　←ここにカート内のアイテムIDが入れられれば完成だけどわからない
+      # redirect_to carts_path, flash: {n: "この商品は既にカートに入っています"}
+    # else
+      @cart.save
+    	redirect_to carts_path
+    # end
   end
 
   def update#個数変更メソッド
