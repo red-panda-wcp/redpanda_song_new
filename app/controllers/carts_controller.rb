@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
   def index
     @carts = Cart.all
-
     @history_address = HistoryAddress.new
 
     @total_price = 0#合計金額を表示するための記述
