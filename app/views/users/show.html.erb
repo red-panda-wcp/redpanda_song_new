@@ -22,7 +22,7 @@
       <% h_histries_count = 0 %>
       <% h_histories.each {|h_h_item| h_histries_count += h_h_item.count}%>
 
-      <p>購入日：<%= h_history_first.created_at.strftime('%Y/%m/%d %H:%M')  %>　<%= h_history_first.order_status_i18n%></p>
+      <p>購入日：<%= h_history_first.created_at.strftime('%Y/%m/%d %H:%M')  %>　<span><%= h_history_first.order_status_i18n%></span></p>
         <div class="adress-text">
           【送付先情報】<br>
             名前 : <%= h_history_first.history_address.lastname%>  <%= h_history_first.history_address.firstname%> <br>

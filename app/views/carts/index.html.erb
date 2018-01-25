@@ -45,35 +45,37 @@
     <!-- 送り先情報 -->
     <%= form_for :history_address,url:history_addresses_path do |f|%>
       <div class="price-box1">
-        <%= f.submit "購入", :disable_with => '購入中...' ,class:"square_btn3",date:{confirm:"本当に購入しますか"}%>
-    <div class="adress-box2">
-      <p class="title">配送先情報</p>
-      <div class="border-line">
-        <span>姓　　　　　　<%= f.text_field :lastname,placeholder: "山田" %></span>
-        <span>名　　　　　　<%= f.text_field :firstname,placeholder: "太郎" %></span>
-      </div>
+        <div class="adress-box-left">
+          <p class="title">配送先情報</p>
+          <div class="border-line">
+            <span>姓　　　　　　<%= f.text_field :lastname,placeholder: "山田" ,class:"form_style_half form_input" %></span>
+            <span>名　　　　　　<%= f.text_field :firstname,placeholder: "太郎",class:"form_style_half form_input" %></span>
+          </div>
 
-      <div class="border-line">
-        <span>姓（カタカナ）<%= f.text_field :kana_lastname,placeholder: "ヤマダ" %></span>
-        <span>名（カタカナ）<%= f.text_field :kana_firstname,placeholder: "タロウ" %></span>
-      </div>
+          <div class="border-line">
+            <span>姓（カタカナ）<%= f.text_field :kana_lastname,placeholder: "ヤマダ",class:"form_style_half form_input" %></span>
+            <span>名（カタカナ）<%= f.text_field :kana_firstname,placeholder: "タロウ",class:"form_style_half form_input" %></span>
+          </div>
 
-      <div class="border-line">
-        <span>郵便番号　　　<%= f.text_field :postal_code,placeholder: "111-0000" %></span>
-      </div>
+          <div class="border-line">
+            <span>郵便番号　　　<%= f.text_field :postal_code,placeholder: "111-0000",class:"form_style_half form_input" %></span>
+          </div>
 
-      <div class="border-line">
-        <span>住所　　　　　<%= f.text_field :address,placeholder: "東京都渋谷区渋谷１−１−１" %></span>
-      </div>
+          <div class="border-line">
+            <span>住所　　　　　<%= f.text_field :address,placeholder: "東京都渋谷区渋谷１−１−１",class:"form_style form_input" %></span>
+          </div>
 
-      <div class="border-line">
-        <span>電話番号　　　<%= f.text_field :phone,placeholder: "000-0000-0000" %></span>
-      </div>
+          <div class="border-line">
+            <span>電話番号　　　<%= f.text_field :phone,placeholder: "000-0000-0000",class:"form_style form_input"%></span>
+          </div>
 
-      <div class="text-center1">
-        <%= f.submit "情報登録" %>
-      </div>
-    </div>
+          <div class="text-center1">
+            <%= f.submit "情報登録" %>
+          </div>
+        </div>
+        <div class="adress-box-right">
+          <%= f.submit "購入", :disable_with => '購入中...' ,class:"square_btn3",date:{confirm:"本当に購入しますか"}%>
+        </div>
     <% end %>
    <br><br>
 </div>

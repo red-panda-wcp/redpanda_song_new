@@ -1,15 +1,7 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 //================================mypage================================
-
 .link{
   padding: 25px 50px;
   color: #81BEF7;
@@ -90,7 +82,6 @@ float: right;
     color: #FFF;
     border-bottom: solid 4px #627295;
     border-radius: 3px;
-    float: right;
 }
 .square_btn1:active {/*ボタンを押したとき*/
     -ms-transform: translateY(4px);
@@ -145,9 +136,8 @@ float: right;
 }
 
 .price-box1{
-  margin-top: 90px;
-  width: 200px;
-  float: right;
+    margin: 90px;
+    width: 70%;
 }
 
 .price-box2{
@@ -159,10 +149,14 @@ float: right;
   margin-left: 90px;
   width: 800px;
 }
-.address-box2{
-  width: 300px;
-  padding-left: 90px;
+
+.adress-box-left{
   float: left;
+}
+
+.adress-box-right{
+  margin-top: 180px;
+  float: right;
 }
 
 .title{
@@ -199,17 +193,20 @@ input{
   width: 200px;
   height: 30px;
   }
+
 select{
   margin-left: 20px;
   width: 40px;
   height: 30px;
   }
+
 textarea {
   margin-left: 60px;
   width: 300px;
   height: 30px;
   }
-*/
+  */
+
 
 
 //===========================devise_common===========================
@@ -303,7 +300,6 @@ textarea {
     padding-bottom: 20px;
     background-color: #ffc0cb;
     border: 2px solid #c3bbbb;
-
 }
 
 .form_style {
@@ -311,7 +307,6 @@ textarea {
 }
 .form_style_half {
     width: 180px;
-    margin: none;
 }
 
 // ==============================signin==============================
