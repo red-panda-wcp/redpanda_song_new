@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :cart
+
+  has_many :carts
 
 def active_for_authentication?
   # ユーザーの論理削除時（self.active == 0)と、devise初期値の状況の場合にログイン許可する

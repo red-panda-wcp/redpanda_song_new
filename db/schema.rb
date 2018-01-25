@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20180125031159) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "discs", force: :cascade do |t|
     t.integer "item_id"
     t.string "disc_name"
