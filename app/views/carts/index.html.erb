@@ -1,10 +1,10 @@
-<div class="album-box2">
-  <p class="cart-top"><%= current_user.email %>さんのカート内商品一覧</p><!--ここはまだ名前カラムをユーザーテーブルに作ってないのでメールで仮置きしてます-->
+<p class="cart-top"><%= current_user.email %>さんのカート内商品一覧</p><!--ここはまだ名前カラムをユーザーテーブルに作ってないのでメールで仮置きしてます-->
 <% if flash[:n] %>
   <div class="message1"><%= flash[:n] %></div>
 <% end %>
   <% @carts.each do |cart| %>
     <% if current_user.id == cart.user_id %>
+    <div class="album-box2">
       <div class="album-image2"></div><!--商品画像がここにくる-->
         <div class="album-text">
           Artist<%= cart.item.artist_name %><br>
@@ -14,7 +14,6 @@
           <br><br>
           sample text<br>
           sample text<br><br>
-        </div>
         <div class="price-box1">
           <!-- 商品１つあたりの金額 -->
           <%= cart.item.price %>円<br>
@@ -35,18 +34,14 @@
         </div>
       </div>
     <% end %>
+    </div>
   <% end %>
-  <% if @carts == nil %>
-  <div class="price-box2">
-    カートには何もありません <br>
-    <% else %>
+
     送料：　540円<br>
     <!-- カートの合計金額 -->
     カート内合計金額：<%= @total_price+540 %>円<br>
   </div>
-  <% end %>
 
-  <div class="address-box"><br><br>
     <!-- 送り先情報 -->
     <%= form_for :history_address,url:history_addresses_path do |f|%>
       <div class="price-box1">
@@ -81,5 +76,4 @@
     </div>
     <% end %>
    <br><br>
-</div>
 </div>
