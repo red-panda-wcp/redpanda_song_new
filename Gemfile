@@ -56,8 +56,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'devise'
-
-gem 'hirb'   # モデルの出力結果を表形式で表示するGem
-gem 'hirb-unicode'
-
-gem 'enum_help'
+gem 'ransack'
+gem 'kaminari'
+gem 'will_paginate'
+gem 'nested_form_fields'
+group :development, :test do
+  gem 'hirb'         # モデルの出力結果を表形式で表示するGem
+  gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
+  gem 'pry-rails'
+end
