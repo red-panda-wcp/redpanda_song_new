@@ -8,7 +8,7 @@
   <span class="user_logo">住所</span> 　<%= @user.address %><br>
   <span class="user_logo">電話番号</span> 　<%= @user.phone %><br>
   <!-- プロフィール編集&削除ボタン -->
-    <%= link_to "削除", users_destroy_path,method: :delete ,class: "square_btn2",data: { :confirm => "ユーザーを削除しますか？(\n)削除すると戻せませんのでご注意ください。"}%>
+    <%= link_to "削除", users_destroy_path,method: :delete ,class: "square_btn2",data: { :confirm => "ユーザーを削除しますか？\n削除すると戻せませんのでご注意ください。"}%>
     <%= link_to "編集", edit_user_registration_path ,class: "square_btn1"%>
 </div></div></div>
 
@@ -22,7 +22,7 @@
       <% h_histries_count = 0 %>
       <% h_histories.each {|h_h_item| h_histries_count += h_h_item.count}%>
 
-      購入日：<%= h_history_first.created_at.strftime('%Y/%m/%d %H:%M')  %>
+      <p>購入日：<%= h_history_first.created_at.strftime('%Y/%m/%d %H:%M')  %>　<%= h_history_first.order_status_i18n%></p>
         <div class="adress-text">
           【送付先情報】<br>
             名前 : <%= h_history_first.history_address.lastname%>  <%= h_history_first.history_address.firstname%> <br>

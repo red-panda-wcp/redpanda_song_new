@@ -59,3 +59,5 @@ gem 'devise'
 
 gem 'hirb'   # モデルの出力結果を表形式で表示するGem
 gem 'hirb-unicode'
+
+gem 'enum_help'

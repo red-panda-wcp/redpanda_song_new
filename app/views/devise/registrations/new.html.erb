@@ -23,11 +23,11 @@
         </div>
     <!-- 住所自動設定ツール参考：https://github.com/yubinbango/yubinbango -->
 
+        <%= f.text_field :kana_lastname, placeholder:"ミョウジ",class:"form_style_half form_input" %>
+        <%= f.text_field :kana_firstname, placeholder:"ナマエ",class:"form_style_half form_input" %><br>
+
         <%= f.text_field :lastname, placeholder:"名字",class:"form_style_half form_input" %>
         <%= f.text_field :firstname, placeholder:"名前",class:"form_style_half form_input" %><br>
-
-        <%= f.text_field :kana_lastname, placeholder:"名字カナ",class:"form_style_half form_input" %>
-        <%= f.text_field :kana_firstname, placeholder:"名前カナ",class:"form_style_half form_input" %><br>
         <%= f.telephone_field :phone, placeholder:"電話番号",class:"form_style form_input",onKeyup:"this.value=this.value.replace(/[^0-9]+/,'')" %><br>
 
         <%= f.submit "登録",class:"btn" %>

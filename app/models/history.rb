@@ -12,5 +12,5 @@ class History < ApplicationRecord
   belongs_to :user
   belongs_to :item
 
-  enum order_status: { preparation: 0, Delivery: 1, finish: 2 }
+  enum order_status: { preparation: 0, in_delivery: 1, finish: 2 }
 end

@@ -11,7 +11,6 @@ class HistoryAddressesController < ApplicationController
       @carts.each do |cart|
         @history = History.new(cart.attributes)#カート内user_id,item_id,countを登録
         @history.price = cart.item.price#priceセット
-        @history.order_status = 0#order_statusセット
         @history.history_address_id = @history_address.id#address_idセット
 
         if cart.item.stock >= @history.count#商品の個数変更　もし在庫がカート内の個数よりも多ければ

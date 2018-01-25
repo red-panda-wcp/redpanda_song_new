@@ -40,3 +40,9 @@ ja:
         password_confirmation: パスワード確認
         email: メールアドレス
         current_password: 現在のパスワード
+  enums:
+    history:
+      order_status:
+        preparation: 準備中
+        in_delivery: 配送中
+        finish: 配送完了
