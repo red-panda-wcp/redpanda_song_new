@@ -47,26 +47,26 @@
       <div class="price-box1">
         <div class="adress-box-left">
           <p class="title">配送先情報</p>
+
           <div class="border-line">
-            <span>姓　　　　　　<%= f.text_field :lastname,placeholder: "山田" ,class:"form_style_half form_input" %></span>
-            <span>名　　　　　　<%= f.text_field :firstname,placeholder: "太郎",class:"form_style_half form_input" %></span>
+            <span>姓（カタカナ）<%= f.text_field :kana_lastname,placeholder: "ヤマダ",class:"form_style_half form_input",value:"#{@current_user.kana_lastname}" %></span>
+            <span>名（カタカナ）<%= f.text_field :kana_firstname,placeholder: "タロウ",class:"form_style_half form_input",value:"#{@current_user.kana_firstname}" %></span>
+          </div>
+          <div class="border-line">
+            <span>姓　　　　　　<%= f.text_field :lastname,placeholder: "山田" ,class:"form_style_half form_input",value:"#{@current_user.lastname}" %></span>
+            <span>名　　　　　　<%= f.text_field :firstname,placeholder: "太郎",class:"form_style_half form_input",value:"#{@current_user.firstname}" %></span>
           </div>
 
           <div class="border-line">
-            <span>姓（カタカナ）<%= f.text_field :kana_lastname,placeholder: "ヤマダ",class:"form_style_half form_input" %></span>
-            <span>名（カタカナ）<%= f.text_field :kana_firstname,placeholder: "タロウ",class:"form_style_half form_input" %></span>
+            <span>郵便番号　　　<%= f.text_field :postal_code,placeholder: "111-0000",class:"form_style_half form_input",value:"#{@current_user.postal_code}" %></span>
           </div>
 
           <div class="border-line">
-            <span>郵便番号　　　<%= f.text_field :postal_code,placeholder: "111-0000",class:"form_style_half form_input" %></span>
+            <span>住所　　　　　<%= f.text_field :address,placeholder: "東京都渋谷区渋谷１−１−１",class:"form_style form_input",value:"#{@current_user.address}" %></span>
           </div>
 
           <div class="border-line">
-            <span>住所　　　　　<%= f.text_field :address,placeholder: "東京都渋谷区渋谷１−１−１",class:"form_style form_input" %></span>
-          </div>
-
-          <div class="border-line">
-            <span>電話番号　　　<%= f.text_field :phone,placeholder: "000-0000-0000",class:"form_style form_input"%></span>
+            <span>電話番号　　　<%= f.text_field :phone,placeholder: "000-0000-0000",class:"form_style form_input",value:"#{@current_user.phone}"%></span>
           </div>
 
           <div class="text-center1">
