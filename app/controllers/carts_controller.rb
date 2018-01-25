@@ -15,12 +15,12 @@ class CartsController < ApplicationController
   def create#カートインデックスに商品追加
   	@cart = Cart.new(cart_params)
   	@cart.user_id = current_user.id
-    # if @cart.item_id == ＠＠＠＠＠＠　←ここにカート内のアイテムIDが入れられれば完成だけどわからない
-      # redirect_to carts_path, flash: {n: "この商品は既にカートに入っています"}
-    # else
+    if Cart.find_by(item_id: @cart.item_id)
+       redirect_to carts_path, flash: {n: "この商品は既にカートに入っています"}
+    else
       @cart.save
     	redirect_to carts_path
-    # end
+    end
   end
 
   def update#個数変更メソッド
