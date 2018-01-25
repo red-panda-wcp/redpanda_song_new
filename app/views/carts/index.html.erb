@@ -1,0 +1,74 @@
+<div class="album-box2">
+  <p class="cart-top"><%= current_user.email %>さんのカート内商品一覧</p><!--ここはまだ名前カラムをユーザーテーブルに作ってないのでメールで仮置きしてます-->
+
+  <% @carts.each do |cart| %>
+    <% if current_user.id == cart.user_id %>
+      <div class="album-image2"></div><!--商品画像がここにくる-->
+        <div class="album-text">
+          Artist<%= cart.item.artist_name %><br>
+          <p class="title"><%= cart.item.item_name %></p>
+          レーベル<%= cart.item.label_name %>
+          ジャンル<%= cart.item.category_id %>
+          <br><br>
+          sample text<br>
+          sample text<br><br>
+        </div>
+        <div class="price-box1">
+          <!-- 商品１つあたりの金額 -->
+          <%= cart.item.price %>円<br>
+          <%= form_for(cart, url: cart_path(cart.id), html: {method: 'PUT'}) do |f| %><!--商品の個数を変更するフォーム-->
+            <%= f.number_field :count ,min:1,max:10 %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :item_id, :value => cart.item.id %>
+            <%= f.submit "個数を変更" %>
+          <% end %>
+          <%= link_to "削除", cart_path(cart.id), method: :delete %><br><!--商品削除ボタン-->
+      <!-- １商品の合計金額 -->
+          小計<%= cart.item.price*cart.count %>円<br>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <% if @carts == nil %>
+  <div class="price-box2">
+    カートには何もありません <br>
+    <% else %>
+    送料：　540円<br>
+    <!-- カートの合計金額 -->
+    カート内合計金額：<%= @total_price+540 %>円<br>
+  </div>
+  <% end %>
+
+  <div class="address-box"><br><br>
+    <!-- 送り先情報 -->
+    <p class="title">配送先情報</p>
+    <%= form_for :history_address,url:history_addresses_path do |f|%>
+      <div class="price-box1">
+        <%= f.submit "購入", :disable_with => '購入中...' ,class:"square_btn3",date:{confirm:"本当に購入しますか"}%>
+
+<label for="option-a"></label>
+      <input id="option-a" type="text" name="message-body" placeholder="配送先住所を選択">
+
+      <div class="adress-box2">
+      <label for="message-body"></label>
+      <%= f.text_field :kana_lastname,placeholder:"ミョウジ",value:"#{@user.kana_lastname}" %>
+      <%= f.text_field :kana_firstname,placeholder:"ナマエ",value:"#{@user.kana_firstname}" %><br>
+      <%= f.text_field :lastname,placeholder:"名字",value:"#{@user.lastname}" %>
+      <%= f.text_field :firstname,placeholder:"名前",value:"#{@user.firstname}" %><br>
+
+      <!-- <textarea id="message-body" type="text" name="message-body" placeholder="名前" ></textarea><br> -->
+      <!-- <label for="message-body">電話番号</label> -->
+      <%= f.telephone_field :phone, placeholder:"電話番号",value:"#{@user.phone}" %><br>
+      <!-- <textarea id="message-body" type="text" name="message-body" placeholder="電話番号"></textarea><br> -->
+      <!-- <label for="message-body">〒</label> -->
+      <%= f.text_field :postal_code, placeholder:"郵便番号",value:"#{@user.postal_code}" %><br>
+      <!-- <textarea id="message-body" type="text" name="message-body" placeholder="郵便番号"></textarea><br> -->
+      <!-- <label for="message-body">住所</label> -->
+      <%= f.text_field :address, placeholder:"住所",value:"#{@user.address}"%><br>
+      <!-- <textarea id="message-body" type="text" name="message-body" placeholder="住所"></textarea><br> -->
+      <br>
+      </div>
+    <%end%>
+   <br><br>
+</div>
+</div>

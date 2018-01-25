@@ -1,0 +1,16 @@
+
+カート流し込み用
+Cart.create(item_id:1,user_id:8,count:2)
+Cart.create(item_id:2,user_id:8,count:1
+Cart.create(item_id:1,user_id:5,count:2)
+Cart.create(item_id:2,user_id:5,count:1)
+
+アドレス設定用
+HistoryAddress.create(postal_code: "1540001", address: "東京都世田谷区", lastname: "田中", firstname: "実", kana_lastname: "タナカ", kana_firstname: "ミノル", phone: "0333333333")
+
+アイテム登録用
+Item.create(artist_name: "高橋イチロウ", item_name: "GOGO RAILs", image_id: "", price: 3000, label_name: "芋洗坂レコード", stock: 30, category_id: 1, release_date: 20190222)
+
+history登録用
+History.create(user_id: 8, item_id: 1, count: 2, order_status: 0, price: 3000, history_address_id: 47)
+History.create(user_id: 8, item_id: 2, count: 1, order_status: 0, price: 3000, history_address_id: 47)

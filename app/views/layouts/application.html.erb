@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Redpanda</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
+    <header>
+      <div class="header-users">
+        <% if user_signed_in? %><!-- ログインしていたら -->
+        ログイン中のユーザー　：<%= link_to "#{current_user.lastname} #{current_user.firstname}",user_root_path %>　様
+        <% end %>
+        |
+        <% unless user_signed_in? %>　<!-- ログインしていなければ -->
+        <%= link_to "ログイン",new_user_session_path%>
+        <%= link_to "ユーザー登録",new_user_registration_path%>
+        <% else %>　<!-- ログインしていれば -->
+        <%= link_to "カート",carts_path %>
+        <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
+        <% end %>
+
+      </div>
+    </header>
+    <%if flash[:notice]%>
+      <div class="flash">　<!-- ログイン時のメッセージ格納 -->
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%if flash[:alert]%>
+      <div class="flash flash-alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <%= yield %>
+
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
   </body>
 </html>

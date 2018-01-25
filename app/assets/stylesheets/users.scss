@@ -1,0 +1,340 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+//================================mypage================================
+
+.link{
+  padding: 25px 50px;
+  color: #81BEF7;
+}
+
+.user-box{
+  width: 800px;
+  margin: 60px 90px;
+  font-size: 25px;
+
+}
+
+.user_logo {
+    display: inline-block;
+    background-color: #c3bbbb;
+    border-radius: 4px;
+    color: #fff;
+    padding: 4px;
+    margin: 5px;
+    font-size: 12px;
+    width: 120px;
+    text-align: center;
+}
+
+.user-text{
+  margin-left: 20px;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+.botton1{
+float: right;
+}
+
+.history-box{
+  width: 800px;
+  margin: 120px;
+  font-size: 25px;
+}
+
+.history-text{
+  font-size: 15px;
+}
+
+.adress-text{
+  padding:40px 60px;
+}
+
+.square_btn1{
+    display: inline-block;
+    margin-left: 15px;
+    padding: 12px 40px;
+    text-decoration: none;
+    background: #FF8000;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    float: right;
+}
+.square_btn2{
+    display: inline-block;
+    margin-left: 15px;
+    padding: 12px 40px;
+    text-decoration: none;
+    background: black;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    float: right;
+}
+.square_btn3{
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    padding: 40px 40px;
+    text-decoration: none;
+    background: #FF8000;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    float: right;
+}
+.square_btn1:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+.square_btn2:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+.square_btn3:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+
+.album-image{
+  width: 300px;
+  height: 300px;
+  float: left;
+}
+.album-image2{
+  margin:0 90px;
+  width: 180px;
+  height: 180px;
+  float: left;
+}
+.album-box{
+  width: 800px;
+  margin: 90px;
+  overflow: hidden;
+}
+.album-box2{
+  width: 800px;
+  margin: 30px 90px;
+  overflow: hidden;
+  padding-bottom: 30px;
+  border-bottom: medium solid #D8D8D8;
+}
+.album-text{
+  float: left;
+  padding-left: 20px;
+}
+.disk-box{
+  margin-left: 180px;
+  margin-bottom: 30px;
+}
+
+.price-box1{
+  margin-top: 90px;
+  width: 200px;
+  float: right;
+}
+
+.price-box2{
+  width: 800px;
+  text-align: right;
+  padding-right: 90px;
+}
+.address-box{
+  margin-left: 90px;
+  width: 800px;
+}
+.address-box2{
+  width: 300px;
+  padding-left: 90px;
+  float: left;
+}
+
+.title{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.title1{
+  font-size: 25px;
+  padding-left: 8px;
+  font-weight: bold;
+  float: right;
+}
+
+.pagination {
+  text-align: center;
+  padding-top: 50px;
+}
+.pagination p {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  color: #fff;
+  background-color: #acabab;
+  border-radius: 3px;
+  line-height: 30px;
+}
+
+/*
+input{
+  margin: 10px 30px 20px 0;
+  width: 200px;
+  height: 30px;
+  }
+select{
+  margin-left: 20px;
+  width: 40px;
+  height: 30px;
+  }
+textarea {
+  margin-left: 60px;
+  width: 300px;
+  height: 30px;
+  }
+*/
+
+
+//===========================devise_common===========================
+.devise_errors {
+    padding-top: 10px;
+}
+
+.devise_errors ul {
+    list-style: none;
+    font-size: 14px;
+    color: #FF0000;
+}
+
+.devise_errors h2 {
+    font-size: 14px;
+}
+
+.form_notice {
+    font-size:14px;
+}
+
+.form_name {
+    padding: 25px 0;
+    font-weight: normal;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+}
+
+.form_style {
+    width: 300px;
+}
+
+.form_input {
+    border-radius: 4px;
+    margin-top: 15px;
+    height: 40px;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+  }
+
+.form_word {
+    padding-left: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ccc;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 300px;
+    color: #fff;
+}
+
+.devise_link {
+    text-decoration: none;
+    text-align:center;
+    width: 100%;
+    padding: 20px 0 30px;
+}
+
+//==============================signup/edit==============================
+
+.form_base {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.form {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.link_space {
+    text-align: center;
+    height: 100px;
+    padding: 30px;
+}
+
+.form_password_changes {
+    margin: 15px;
+    padding-bottom: 20px;
+    background-color: #ffc0cb;
+    border: 2px solid #c3bbbb;
+
+}
+
+.form_style {
+    width: 360px;
+}
+.form_style_half {
+    width: 180px;
+    margin: none;
+}
+
+// ==============================signin==============================
+.form_base_signin {
+    width: 400px;
+    height: 500px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -200px;
+}
+
+.form_signin {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+.link_space_signin {
+    height: 100px;
+    padding: 30px;
+}
+
