@@ -1,23 +1,29 @@
 Rails.application.routes.draw do
 
-devise_for :admins, controllers: {
+  devise_for :admins,controllers: {
         registrations: 'admins/registrations',
-        sessions: 'admins/sessions'
+        sessions: 'admins/sessions',
+        passwords: 'users/passwords'
+        }
+
+  devise_for :users,controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations',
+        passwords: 'users/passwords'
       }
-  # devise_for :admins
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/" => "items#index"
-  resources :items,only: [:new, :create, :index, :show, :update, :edit, :destroy] do
-  resources :discs
-  resources :songs
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :carts
-  resources :histroies
-  resources :history_addresses
-  resources :categories,only: [:new, :create, :index, :update, :edit, :destroy] do
+  resources :history_address
+  resources :admin_users, only:[:index]
 
-  resources :admin_users
+  resources :items,only: [:new, :create, :index, :show, :update, :edit, :destroy] do
+    resources :discs
+    resources :songs
 
-end
-end
+    resources :categories,only: [:new, :create, :index, :update, :edit, :destroy] do
+    end
+
+  end
+  root "items#index"
 end

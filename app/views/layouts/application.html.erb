@@ -2,29 +2,50 @@
 <html>
   <head>
     <title>Redpanda</title>
-    <div id="slidemenu">
-  <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-    <% if admin_signed_in? %>
-      <li class="">
-        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <li class="">
-        <%= link_to '投稿フォーム', new_item_path %>
-      </li>
-    <% else %>
-      <li class="">
-        <%= link_to "管理者ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
-  </ul>
-</div>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+   <header>
+    <% if admin_signed_in? #アドミンでログインしている場合のCSS設定%>
+    <div class="applicaion-header-admins">
+    <% else #アドミンでログインしていない場合のCSS設定 %>
+    <div class="applicaion-header-users">
+    <% end %>
+    <div class="applicaion-header-search">
+      REDPANDA　ヘッダー共通部分このへん
+    </div>
+      <ul>
+        <% if admin_signed_in? %>
+          <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <li><%= link_to '投稿フォーム', new_item_path %></li>
+        <% elsif user_signed_in? %>
+          <li>ログイン中のユーザー：<%= current_user.email %></li>
+          <li>カート</li>
+          <li><%= link_to 'ログアウト',destroy_user_session_path,method: :delete%></li>
+        <% else %>
+          <li><%= link_to 'ログイン',new_user_session_path %></li>
+          <li><%= link_to 'ユーザー登録',new_user_registration_path %></li>
+          <li><%= link_to "管理者ログイン あとで消す", new_admin_session_path %> admin@admin.com(adminadmin)</li>
+          <li><%= link_to "管理者ユーザー作成 あとで消す", new_admin_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+   </header>
+
+   <%if flash[:notice]%>
+     <div class="flash">　<!-- ログイン時のメッセージ格納 -->
+       <%= flash[:notice] %>
+     </div>
+   <% end %>
+   <%if flash[:alert]%>
+     <div class="flash flash-alert">
+       <%= flash[:alert] %>
+     </div>
+   <% end %>
     <%= yield %>
+
   </body>
 </html>

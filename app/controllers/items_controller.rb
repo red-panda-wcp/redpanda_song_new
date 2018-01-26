@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_admin!, except:[:index]
 
   def index
     @q = Item.search(params[:q])
@@ -9,9 +10,12 @@ class ItemsController < ApplicationController
 
   def new
   	@item = Item.new
-    @disc = @item.discs.build
-    5.times{@disc.songs.build}
-
+      # @disc = @item.discs.build
+      # n.times{@disc.songs.build}
+[1,1].each do |f|
+  @disc = @item.discs.build
+  f.times{@disc.songs.build}
+end
   end
 
   def create

@@ -1,20 +1,6 @@
-<% if flash[:notice] %>
-   <p id="notice">
-      <%= flash[:notice] %>
-   </p>
-<% end %>
-
-
 <h1>CD一覧<h4><%=link_to("カテゴリー編集","/categories/index")%></h4></h1>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>画面５（インデックス）</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="style5.css">
-</head>
 <!--検索フォーム-->
-<body>商品検索
+商品検索
 　<%= search_form_for @q,url: items_path do |f| %>
 	  <%= f.search_field :artist_name_or_label_name_or_item_name_cont %>
 	  <%= f.submit "search",class: 'record-form__submit-button' %><br><br>
@@ -25,7 +11,7 @@
 			<% @items.each do |item| %>
 			<td><div class="item_image">
 				<!--画像画面左　登録がない場合noimageを表示-->
-				<%= attachment_image_tag item, :image, :fill, 150, 150, format: 'jpeg', fallback: "noimage_panda1.jpg",class:"item_image" %></div></td>
+				<%#= attachment_image_tag item, :image, :fill, 150, 150, format: 'jpeg', fallback: "noimage_panda1.jpg",class:"item_image" %></div></td>
 				<!--商品内容-->
 				<td><div>artist name:<%= item.artist_name %></div>
 				<div>cd name:<%= item.item_name %></div>
@@ -41,10 +27,5 @@
 </tr>
 </thead><br><br>
 
-
-
 	<!--           こ          こ            か         ら        先はeachで表示される部分だから、実装する時は消す-->
 		<!--                こ            こ              ま              で               消               す               -->
-
-</body>
-</html>
