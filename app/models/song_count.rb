@@ -1,0 +1,2 @@
+class SongCount < ApplicationRecord
+end

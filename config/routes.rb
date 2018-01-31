@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :carts
   resources :history_address
   resources :admin_users, only:[:index]
+  get "/add/disc" => "items#add_disc"
+  get "/add/song" => "items#add_song"
 
   resources :items,only: [:new, :create, :index, :show, :update, :edit, :destroy] do
     resources :discs

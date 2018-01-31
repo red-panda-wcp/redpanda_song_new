@@ -9,13 +9,43 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @disc_count = DiscCount.find(1)
+    @disc_count.count = 1
+    @disc_count.save
+    @song_count = SongCount.find(196)#<=これは試行錯誤した回数です。データによって違うので、最初にコンソールで作ったIDを入れてください
+    @song_count.count = 1
+    @song_count.save
   	@item = Item.new
-      # @disc = @item.discs.build
-      # n.times{@disc.songs.build}
-[1,1].each do |f|
-  @disc = @item.discs.build
-  f.times{@disc.songs.build}
-end
+    @disc_count.count.times{
+      @disc = @item.discs.build
+      @song_count.count.times{@disc.songs.build}
+    }
+  end
+
+  def add_disc
+    @song_count = SongCount.find(196)#<=これは試行錯誤した回数です。データによって違うので、最初にコンソールで作ったIDを入れてください
+    @disc_count = DiscCount.find(1)
+    @disc_count.count += 1
+    @disc_count.save
+    @item = Item.new
+    @disc_count.count.times{
+      @disc = @item.discs.build
+      @song_count.count.times{@disc.songs.build}
+    }
+    render :new
+  end
+
+  def add_song
+    @song_count = SongCount.find(196)#<=これは試行錯誤した回数です。データによって違うので、最初にコンソールで作ったIDを入れてください
+    @disc_count = DiscCount.find(1)
+    @item = Item.new
+    @song_count.count += 1
+    @song_count.save
+    @disc_count.count.times{
+      @disc = @item.discs.build
+      @song_count.count.times{@disc.songs.build}
+    }
+    render :new
   end
 
   def create
@@ -50,6 +80,10 @@ end
   end
 
   private
+
+    def song_count_params
+      params.require(:song_count).permit(:count)
+    end
     def item_params
         params.require(:item).permit(
           :artist_name,

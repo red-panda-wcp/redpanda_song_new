@@ -13,3 +13,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+$(function(){
+	$("div").on("click", function(){
+		$(this).slideUp();
+	});
+});

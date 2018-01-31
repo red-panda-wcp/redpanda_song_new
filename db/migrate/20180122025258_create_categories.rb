@@ -4,5 +4,6 @@
         t.string :category_name
 
         t.timestamps
-      end
+       end
+  	 end
 end

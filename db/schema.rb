@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125031159) do
+ActiveRecord::Schema.define(version: 20180126125511) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20180125031159) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "disc_counts", force: :cascade do |t|
+    t.integer "count", limit: 1, default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "discs", force: :cascade do |t|
     t.integer "item_id"
     t.string "disc_name"
@@ -54,7 +60,7 @@ ActiveRecord::Schema.define(version: 20180125031159) do
     t.integer "user_id"
     t.integer "item_id"
     t.integer "count"
-    t.integer "order_status", default: 0
+    t.integer "order_status"
     t.integer "price"
     t.integer "history_address_id"
     t.datetime "created_at", null: false
@@ -86,6 +92,12 @@ ActiveRecord::Schema.define(version: 20180125031159) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "song_counts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "count", default: 1, null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.integer "disc_id"
     t.string "song_name"
@@ -107,14 +119,6 @@ ActiveRecord::Schema.define(version: 20180125031159) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "lastname"
-    t.string "firstname"
-    t.string "kana_lastname"
-    t.string "kana_firstname"
-    t.string "postal_code"
-    t.string "address"
-    t.string "phone"
-    t.integer "active", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

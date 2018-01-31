@@ -1,0 +1,2 @@
+class DiscCount < ApplicationRecord
+end
